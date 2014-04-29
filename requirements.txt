@@ -1,0 +1,6 @@
+django==1.5.1
+south
+Pillow
+Unipath==1.0
+django-localflavor
+python-mysqldb

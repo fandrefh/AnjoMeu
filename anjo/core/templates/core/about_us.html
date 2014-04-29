@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Quem somos | {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+	<div class="container">
+		{% for a in about_us %}
+			<h3>{{ a.title }}</h3>
+			{{ a.about_us|safe }}
+		{% endfor %}
+	</div>
+{% endblock content %}

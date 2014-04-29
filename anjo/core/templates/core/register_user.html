@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro de usuário | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if registered %}
+			Obrigado por se cadastrar, faça <a href="{% url 'home:userlogin' %}">Login</a> e Crie uma campanha ou Faça uma <a href="#">doação!</a>
+		{% else %}
+		<div id="add-user">
+			<h3>Já faz parte da nossa comunidade? Então faça <a href="{% url 'home:userlogin' %}">Login</a> senão, preencha os campos abaixo e contribua para um mundo melhor.</h3>
+			<form method="POST", action="{% url 'home:newuser' %}">
+					{% csrf_token %}
+					
+					<div class="field">
+						<p class="field-label">{{ user_form.first_name.label }}</p>
+						<p class="field-input">{{ user_form.first_name }}</p>
+						<p class="hint">
+							Digite seu nome.
+							{{ user_form.first_name.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ user_form.first_name.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ user_form.last_name.label }}</p>
+						<p class="field-input">{{ user_form.last_name }}</p>
+						<p class="hint">
+							Digite seu sobrenome.
+							{{ user_form.last_name.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ user_form.last_name.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ user_form.email.label }}</p>
+						<p class="field-input">{{ user_form.email }}</p>
+						<p class="hint">
+							Informe seu e-mail.
+							{{ user_form.email.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ user_form.email.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ user_form.username.label }}</p>
+						<p class="field-input">{{ user_form.username }}</p>
+						<p class="hint">
+							Digite um nome de usuário.
+							{{ user_form.username.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ user_form.username.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ user_form.password.label }}</p>
+						<p class="field-input">{{ user_form.password }}</p>
+						<p class="hint">
+							Digite uma senha.
+							{{ user_form.password.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ user_form.password.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.cpf.label }}</p>
+						<p class="field-input">{{ profile_form.cpf }}</p>
+						<p class="hint">
+							Digite seu CPF.
+							{{ profile_form.cpf.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.cpf.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.birthday.label }}</p>
+						<p class="field-input">{{ profile_form.birthday }}</p>
+						<p class="hint">
+							Digite sua data de nascimento.
+							{{ profile_form.birthday.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.birthday.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.gender.label }}</p>
+						<p class="field-input">{{ profile_form.gender }}</p>
+						<p class="hint">
+							Escolha uma opção.
+							{{ profile_form.gender.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.gender.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.address.label }}</p>
+						<p class="field-input">{{ profile_form.address }}</p>
+						<p class="hint">
+							Digite seu endereço completo.
+							{{ profile_form.address.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.address.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.code_postal.label }}</p>
+						<p class="field-input">{{ profile_form.code_postal }}</p>
+						<p class="hint">
+							Informe seu CEP.
+							{{ profile_form.code_postal.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.code_postal.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.neighborhood.label }}</p>
+						<p class="field-input">{{ profile_form.neighborhood }}</p>
+						<p class="hint">
+							Informe seu bairro.
+							{{ profile_form.neighborhood.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.neighborhood.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.state.label }}</p>
+						<p class="field-input">{{ profile_form.state }}</p>
+						<p class="hint">
+							Escolha um estado.
+							{{ profile_form.state.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.state.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.city.label }}</p>
+						<p class="field-input">{{ profile_form.city }}</p>
+						<p class="hint">
+							Informe sua cidade.
+							{{ profile_form.city.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.city.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ profile_form.phone_number.label }}</p>
+						<p class="field-input">{{ profile_form.phone_number }}</p>
+						<p class="hint">
+							Informe um número de telefone para contato.
+							{{ profile_form.phone_number.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ profile_form.phone_number.errors }}</li>
+						</ul>
+					</div>
+					<input type="submit" value="Cadastrar">
+			</form>
+		</div>
+		{% endif %}
+	</div>
+{% endblock content %}

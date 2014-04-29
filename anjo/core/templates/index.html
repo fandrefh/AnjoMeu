@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="banner-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="12u">
+            
+                <!-- Banner -->
+                    <div id="banner" class="box">
+
+                        <div>
+                            <div class="row">
+                                <div class="7u">
+                                    <h2>AnjoMeu.org</h2>
+                                    <p>Plataforma de Financiamento coletivo, crie uma campanha ou ajude quem precisa.</p>
+                                </div>
+                                <div class="5u">
+                                    <ul>
+                                        <li><a href="{% url 'home:newuser' %}" class="button big fa fa-arrow-circle-right">Criar campanha</a></li>
+                                        <li><a href="#content" class="button alt big fa fa-question-circle">Saiba mais</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Wrapper -->
+<div id="features-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="4u">
+            
+                <!-- Box -->
+                    <section class="box box-feature">
+                        <a href="#" class="image image-full"><img src="{{ STATIC_URL }}images/pic01.jpg" alt="" width="384" height="304" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>Put something here</h2>
+                                <span class="byline">Maybe here as well I think</span>
+                            </header>
+                            <p>You can put all kinds of stuff here, though I’m not sure what. Maybe a 
+                            little bit about one of those things you do that’s so cool?</p>
+                        </div>
+                    </section>
+
+            </div>
+            <div class="4u">
+            
+                <!-- Box -->
+                    <section class="box box-feature">
+                        <a href="#" class="image image-full"><img src="{{ STATIC_URL }}images/pic02.jpg" alt="" width="384" height="304" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>An interesting title</h2>
+                                <span class="byline">This is also an interesting subtitle</span>
+                            </header>
+                            <p>You can put all kinds of stuff here, though I’m not sure what. Maybe a little bit about one of those things you do that’s so cool?</p>
+                        </div>
+                    </section>
+
+            </div>
+            <div class="4u">
+            
+                <!-- Box -->
+                    <section class="box box-feature last">
+                        <a href="#" class="image image-full"><img src="{{ STATIC_URL }}images/pic03.jpg" alt="" /></a>
+                        <div class="inner">
+                            <header>
+                                <h2>Oh, and finally ...</h2>
+                                <span class="byline">Here's another intriguing subtitle</span>
+                            </header>
+                            <p>You can put all kinds of stuff here, though I’m not sure what. Maybe a 
+                            little bit about one of those things you do that’s so cool?</p>
+                        </div>
+                    </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Wrapper -->
+<div id="main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="4u">
+            
+                <!-- Sidebar -->
+                    <div id="sidebar">
+                        <section class="widget-thumbnails">
+                            <h3>Campanhas criadas</h3>
+                            <div class="grid">
+                                <div class="row no-collapse half">
+                                    <div class="6u"><a href="http://html5up.net/minimaxing/" class="image image-full"><img src="{{ STATIC_URL }}images/pic04.jpg" alt="" /></a></div>
+                                    <div class="6u"><a href="http://html5up.net/halcyonic/" class="image image-full"><img src="{{ STATIC_URL }}images/pic05.jpg" alt="" /></a></div>
+                                </div>
+                                <div class="row no-collapse half">
+                                    <div class="6u"><a href="http://html5up.net/arcana/" class="image image-full"><img src="{{ STATIC_URL }}images/pic06.jpg" alt="" /></a></div>
+                                    <div class="6u"><a href="http://html5up.net/zerofour/" class="image image-full"><img src="{{ STATIC_URL }}images/pic07.jpg" alt="" /></a></div>
+                                </div>
+                            </div>
+                            <a href="#" class="button fa fa-file-text-o">Ver mais</a>
+                        </section>
+                    </div>
+            
+            </div>
+            <div class="8u">
+
+                <!-- Content -->
+                    <div id="content">
+                        <section class="last">
+                            <h2>Quem somos?</h2>
+
+                            <p>
+                                Somos uma plataforma de <a href="http://pt.wikipedia.org/wiki/Financiamento_coletivo" target="_blank" title="Ir para Wikipedia e ver uma descrição">Crowdfunding</a>, em português significa Financiamento coletivo, destina-se através de doações a arrecadar dinheiro online para a realização de projetos pessoais de qualquer natureza.
+                            </p>
+                            <p>
+                                Se precisar crie sua campanha ou faça sua doação!
+                            </p>
+                            <a href="{% url 'home:newuser' %}" class="button fa fa-arrow-circle-right">Criar campanha</a>
+                            <a href="#" class="button fa fa-arrow-circle-right">Fazer uma doação</a>
+                        </section>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

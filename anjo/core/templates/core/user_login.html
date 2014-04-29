@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Login de usuário | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<div id="form-login" class="form-login">
+			<ul class="message-error">
+				{% if login_error %}
+					<li>{{ login_error }}</li>
+				{% endif %}
+			</ul>
+			<form method="POST", action="{% url 'home:userlogin' %}">
+					{% csrf_token %}
+					<div class="field">
+						<p class="field-label">Usuário</p>
+						<input type="text" name="username" placeholder="Digite seu nome de usuário" required>
+						<p class="field-label">Senha</p>
+						<input type="password" name="password" placeholder="Digite sua senha" required>
+					</div>
+					<input type="submit" value="Entrar">
+			</form>
+		</div>
+	</div>
+{% endblock content %}

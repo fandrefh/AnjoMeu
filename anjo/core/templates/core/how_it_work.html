@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Como funciona | {{ block.super }}{% endblock title %}
+
+
+{% block content %}
+	<div class="container">
+		{% for c in how_work %}
+			<h3>{{ c.title }}</h3>
+			{{ c.how_work|safe }}
+		{% endfor %}
+	</div>
+{% endblock content %}

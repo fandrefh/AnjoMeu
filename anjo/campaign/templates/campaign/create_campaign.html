@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar minha campanha | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if created %}
+			Obrigado por criar sua campanha com a gente, divulgue o máximo que puder, Facebook, Twitter, fale para os amigos e familiares que você precisa dessa ajuda.
+		{% else %}
+		<div id="create-campaign">
+			<h3>Preencha os campos abaixo para criar sua campanha.</h3>
+			<form method="POST", enctype="multipart/form-data" action="{% url 'campaign:createcampaign' %}">
+					{% csrf_token %}
+					
+					<div class="field">
+						<p class="field-label">{{ campaign_form.title.label }}</p>
+						<p class="field-input">{{ campaign_form.title }}</p>
+						<p class="hint">
+							Digite um título para sua campanha.
+							{{ campaign_form.title.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ campaign_form.title.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ campaign_form.goal.label }}</p>
+						<p class="field-input">{{ campaign_form.goal }}</p>
+						<p class="hint">
+							Digite o valor da sua meta.
+							{{ campaign_form.goal.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ campaign_form.goal.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ campaign_form.image.label }}</p>
+						<p class="field-input">{{ campaign_form.image }}</p>
+						<p class="hint">
+							Envie uma imagem que represente sua campanha.
+							{{ campaign_form.image.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ campaign_form.image.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
+						<p class="field-label">{{ campaign_form.message.label }}</p>
+						<p class="field-input">{{ campaign_form.message }}</p>
+						<p class="hint">
+							Descreva sua campanha, explique porque você precisa dessa ajuda.
+							{{ campaign_form.message.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ campaign_form.message.errors }}</li>
+						</ul>
+					</div>
+					<input type="submit" value="Criar campanha">
+			</form>
+		</div>
+		{% endif %}
+	</div>
+{% endblock content %}
