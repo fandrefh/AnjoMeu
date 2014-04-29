@@ -3,5 +3,5 @@ south
 Pillow
 Unipath==1.0
 django-localflavor
-python-mysqldb
+MySQL-python
 dj-static
