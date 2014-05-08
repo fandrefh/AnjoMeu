@@ -34,22 +34,26 @@
 <div id="features-wrapper">
     <div class="container">
         <div class="row">
-            {% for c in campaign %}
-                <div class="4u">
-                        <!-- Box -->
-                        <section class="box box-feature">
-                            <a href="#" class="image image-full"><img src="{{ c.image.url }}" alt="" width="384" height="304" /></a>
-                            <div class="inner">
-                                <header>
-                                    <h2>{{ c.title }}</h2>
-                                    <span class="byline">Criada por {{ c.user.first_name }} e precisa de R$ {{ c.goal }}</span>
-                                </header>
-                                <p>{{ c.message|truncatewords:30 }}</p>
-                                <a href="#" class="button fa fa-file-text-a">Quero doar</a>
-                            </div>
-                        </section>
-                </div>
-            {% endfor %}
+            {% if campaign %}
+                {% for c in campaign %}
+                    <div class="4u">
+                            <!-- Box -->
+                            <section class="box box-feature">
+                                <a href="#" class="image image-full"><img src="{{ c.image.url }}" alt="" width="384" height="304" /></a>
+                                <div class="inner">
+                                    <header>
+                                        <h2>{{ c.title }}</h2>
+                                        <span class="byline">Criada por {{ c.user.first_name }} e precisa de R$ {{ c.goal }}</span>
+                                    </header>
+                                    <p>{{ c.message|truncatewords:30 }}</p>
+                                    <a href="#" class="button fa fa-file-text-a">Quero doar</a>
+                                </div>
+                            </section>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h4>Ops! Nenhuma campanha foi encontrada. Aproveite e <a href="{% url 'campaign:createcampaign' %}">crie a sua</a> e comece a arrecadar aquela grana de que tanto precisa!</h4>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -66,9 +70,14 @@
                             <h3>Campanhas criadas</h3>
                             <div class="grid">
                                 <div class="row no-collapse half">
-                                    {% for cc in camp_created %}
-                                    <div class="6u"><a href="{{ cc.id }}" class="image image-full"><img src="{{ cc.image.url }}" width="180px" height="101" alt="{{ cc.title }}" title="{{ cc.title }}" /></a></div>
-                                    {% endfor %}
+                                    {% if camp_created %}
+                                        {% for cc in camp_created %}
+                                        <div class="6u"><a href="{{ cc.id }}" class="image image-full"><img src="{{ cc.image.url }}" width="180px" height="101" alt="{{ cc.title }}" title="{{ cc.title }}" /></a></div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>Ops! Nenhuma campanha foi encontrada. Aproveite e <a href="{% url 'campaign:createcampaign' %}">crie a sua</a> e comece a arrecadar aquela grana de que tanto precisa!</p>
+                                    {% endif %}
+
                                 </div>
                             </div>
                             <a href="{% url 'campaign:listcampaign' %}" class="button fa fa-file-text-o">Ver mais</a>
