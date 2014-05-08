@@ -72,6 +72,8 @@
 			-o-box-sizing: border-box;
 			-ms-box-sizing: border-box;
 			box-sizing: border-box;
+			/* Modified by @fandrefh */
+			margin-bottom: 10px;
 		}
 
 		.row + .row > * {

@@ -16,9 +16,10 @@ class Campaign(models.Model):
 
 	user = models.ForeignKey(User, blank=True, null=True)
 	title = models.CharField(u'Título da sua Campanha', max_length=50)
-	goal = models.DecimalField(u'Meta', max_digits=15, decimal_places=2, help_text='De quanto você precisa?')
+	goal = models.DecimalField(u'Meta R$', max_digits=15, decimal_places=2, help_text='De quanto você precisa?')
 	image = models.ImageField(u'Envie uma imagem', upload_to=generate_new_filename, help_text='Envie uma bela imagem para sua campanha.')
 	message = models.TextField(u'Fale sobre sua campanha', help_text='Faça uma boa descrição da sua campanha')
+	created_at = models.DateTimeField(auto_now_add=True)
 
 	def real_coin(self):
 		setlocale(LC_ALL, 'pt_BR.UTF-8')

@@ -10,8 +10,9 @@ from .forms import UserForm, UserProfileForm
 
 
 def homepage(request):
-	campaign = Campaign.objects.all()
-	return render(request, 'index.html', {'campaign': campaign})
+	campaign = Campaign.objects.all().order_by('-created_at')[:3]
+	camp_created = Campaign.objects.all().order_by('-created_at')[:4]
+	return render(request, 'index.html', {'campaign': campaign, 'camp_created': camp_created})
 
 def about(request):
 	about_us = AboutUs.objects.all()

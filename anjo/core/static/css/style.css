@@ -520,6 +520,8 @@
 		.fa-coffee:before{content:"\f0f4"}
 		.fa-cutlery:before{content:"\f0f5"}
 		.fa-file-text-o:before{content:"\f0f6"}
+		/*Inserted by @fandrefh */
+		.fa-file-text-a:before{content:"R$ "}
 		.fa-building:before{content:"\f0f7"}
 		.fa-hospital:before{content:"\f0f8"}
 		.fa-ambulance:before{content:"\f0f9"}
@@ -856,4 +858,27 @@
 }
 .link-logged a:hover {
 	text-decoration: underline;
+}
+span a {
+	text-decoration: none;
+}
+span a:hover {
+	text-decoration: underline;
+}
+.lc-img {
+	margin-right: 10px;
+	margin-bottom: 20px;
+	float: left;
+	clear: both;
+}
+.lc-img img {
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+.lc h3 {
+	margin-bottom: 5px;
+}
+.lc p {
+	margin-bottom: 5px;
 }

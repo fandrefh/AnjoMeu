@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Campanhas criadas | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if list_campaign %}
+			<h2>Escolha uma ou mais campanhas e faça uma doação!</h2>
+			{% for lc in list_campaign %}
+			<section class="lc">
+				<div class="lc-img">
+					<img src="{{ lc.image.url }}" width="200px" height="120px" alt="{{ lc.title }}" title="{{ lc.title }}">
+				</div>
+				<h3>{{ lc.title }}</h3>
+				<p>{{ lc.message|truncatewords:15 }}</p>
+				<span class="lc-camp"><a href="#">Ver campanha...</a></span>
+			</section>
+			{% endfor %}
+		{% else %}
+			Não existe nenhuma campanha criada, <a href="{% url 'campaign:createcampaign' %}">crie a sua</a> e consiga aquela grana de que tanto precisa!
+		{% endif %}
+
+	<div class="pagination">
+    <span class="step-links">
+        {% if list_campaign.has_previous %}
+            <a href="?page={{ list_campaign.previous_page_number }}">voltar</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ list_campaign.number }} de {{ list_campaign.paginator.num_pages }}
+        </span>
+
+        {% if list_campaign.has_next %}
+            <a href="?page={{ list_campaign.next_page_number }}">próxima</a>
+        {% endif %}
+    </span>
+</div>
+	</div>
+{% endblock content %}
