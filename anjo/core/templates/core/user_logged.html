@@ -6,6 +6,6 @@
 	<div class="container">
 		{% if user.is_authenticated %}
 			<h3>Login efetuado com sucesso!</h3>
-			<span class="link-logged"><a href="{% url 'campaign:createcampaign' %}">Crie sua campanha</a></span> ou <span class="link-logged"><a href="">Faça uma doação</a></span>
+			<span class="link-logged"><a href="{% url 'campaign:createcampaign' %}">Crie sua campanha</a></span> ou <span class="link-logged"><a href="{% url 'campaign:listcampaign' %}">Faça uma doação</a></span>
 		{% endif %}
 {% endblock content %}
