@@ -57,7 +57,8 @@ USE_THOUSAND_SEPARATOR = True
 
 THOUSAND_SEPARATOR = '.'
 
-LOGIN_REDIRECT_URL = '/login/'
+AUTH_PROFILE_MODULE = 'core.UserProfile'
+LOGIN_URL = '/login/'
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"

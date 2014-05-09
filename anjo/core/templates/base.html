@@ -37,7 +37,7 @@
             <nav>
                 <ul>
                     {% if not user.is_authenticated %}
-                        <li><a href="/login/">Login</a></li>
+                        <li><a href="{% url 'home:userlogin' %}">Login</a></li>
                     {% else %}
                         <li>Seja bem-vindo {{ user.first_name }}!</li>
                     {% endif %}
