@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Envie seu depoimento | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<h4>Tem algo a dizer sobre o AnjoMeu.org? Aproveite, envie elogios, agradecimentos, críticas, precisamos da sua opinião.</h4>
+		{% if created %}
+			<p>Obrigado! Seu comentário foi enviado com sucesso, seu feedback é muito para nós! :D</p>
+		{% else %}
+			<form method="POST" action="{% url 'home:createtestimonial' %}">
+				{% csrf_token %}
+				<div class="field">
+					<p class="field-label">{{ test_form.name.label }}</p>
+					<p class="field-input">{{ test_form.name }}</p>
+					<p class="hint">
+						Digite seu nome.
+						{{ test_form.name.help_text }}
+					</p>
+					<ul class="message-error">
+						<li>{{ test_form.name.errors }}</li>
+					</ul>
+				</div>
+				<div class="field">
+					<p class="field-label">{{ test_form.message.label }}</p>
+					<p class="field-input">{{ test_form.message }}</p>
+					<p class="hint">
+						Digite sua mensagem.
+						{{ test_form.message.help_text }}
+					</p>
+					<ul class="message-error">
+						<li>{{ test_form.message.errors }}</li>
+					</ul>
+				</div>
+				<input type="submit" value="Enviar depoimento">
+			</form>
+		{% endif %}
+	</div>
+{% endblock content %}

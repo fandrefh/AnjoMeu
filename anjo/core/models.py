@@ -44,3 +44,12 @@ class UserProfile(models.Model):
 
 	def __unicode__(self):
 		return self.user.username
+
+class Testimonials(models.Model):
+	name = models.CharField(u'Nome', max_length=30)
+	message = models.TextField(u'Mensagem')
+	active = models.BooleanField(default=False)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	def __unicode__(self):
+		return self.name

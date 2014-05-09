@@ -2,7 +2,13 @@
 from django import forms
 from localflavor.br.br_states import STATE_CHOICES
 from django.contrib.auth.models import User
-from .models import UserProfile
+from .models import UserProfile, Testimonials
+
+
+class TestimonialsForm(forms.ModelForm):
+	class Meta:
+		model = Testimonials
+		exclude = ('active',)
 
 class UserForm(forms.ModelForm):
 	first_name = forms.CharField(label='Nome')

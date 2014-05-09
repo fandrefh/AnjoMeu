@@ -70,6 +70,7 @@
                                                 <li><a href="{% url 'home:aboutus' %}">Quem somos</a></li>
                                                 <li><a href="{% url 'home:howwork' %}">Como funciona</a></li>
                                                 <li><a href="{% url 'home:donors' %}">Anjos</a></li>
+                                                <li><a href="{% url 'home:testimonials' %}">Depoimentos</a></li>
                                             </ul>
                                         </nav>
                                 
@@ -109,12 +110,17 @@
                                 <section class="widget-links">
                                    <h2>Depoimentos</h2>
                                     <ul class="style2">
-                                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                                        {% if testimonial %}
+                                            {% for t in testimonial %}
+                                                <li><a href="#">{{ t.message|truncatewords:3 }}</a></li>
+                                            {% endfor %}
+                                        {% else %}
+                                            <li>Nenhum depoimento ainda, tem algo a dizer? <a href="{% url 'home:createtestimonial' %}">Envie o seu agora</a>.</li>
+                                        {% endif %}
                                     </ul>
+                                    <footer>
+                                        <span class="home-test"><a href="{% url 'home:createtestimonial' %}">Envie o seu depoimento</a></span>
+                                    </footer>
                                 </section>
                         
                         </div>

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Depoimentos | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<h3>Saiba o que estão falando do AnjoMeu.org!</h3>
+		{% if testimonial %}
+		{% for t in testimonial %}
+		<blockquote>
+				<h5>{{ t.name }}</h5>
+				<p>
+					<cite>{{ t.message }}</cite>
+				</p>
+		</blockquote>
+		{% endfor %}
+		{% else %}
+		<p>Nenhum depoimento ainda, tem algo a dizer? <a href="{% url 'home:createtestimonial' %}">Envie o seu agora</a>.</p>
+		{% endif %}
+	</div>
+{% endblock content %}

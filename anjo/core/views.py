@@ -4,15 +4,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 
-from models import AboutUs, HowItWork
+from .models import AboutUs, HowItWork, Testimonials
 from anjo.campaign.models import Campaign
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, TestimonialsForm
 
 
 def homepage(request):
 	campaign = Campaign.objects.all().order_by('-created_at')[:3]
 	camp_created = Campaign.objects.all().order_by('-created_at')[:4]
-	return render(request, 'index.html', {'campaign': campaign, 'camp_created': camp_created})
+	testimonial = Testimonials.objects.all().order_by('-created_at')[:5]
+	return render(request, 'index.html', {'campaign': campaign, 'camp_created': camp_created, 'testimonial': testimonial})
 
 def about(request):
 	about_us = AboutUs.objects.all()
@@ -88,3 +89,21 @@ def user_logged(request):
 def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
+def create_testimonial(request):
+	created = False
+	
+	if request.method == 'POST':
+		test_form = TestimonialsForm(data=request.POST)
+		if test_form.is_valid():
+			test_form.save()
+			created = True
+	else:
+		test_form = TestimonialsForm()
+	return render(request, 'core/create_testimonial.html', {'test_form': test_form, 'created': created})
+
+
+
+def testimonial(request):
+	testimonial = Testimonials.objects.all().order_by('-created_at')
+	return render(request, 'core/testimonials.html', {'testimonial': testimonial})
