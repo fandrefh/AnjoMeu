@@ -778,19 +778,13 @@
 	{
 		overflow: hidden;
 	}
-
-		#logo h1
-		{
-			background: #ff4486;
-			color: #fff;
-			border-radius: 6px;
-			font-family: 'Oleo Script', serif;
-			font-weight: 400;
-		}
 		
-		#logo span
+		.slogan
 		{
 			font-weight: 800;
+			font-size: 0.8em;
+			margin-top: -15px;
+			margin-left: 155px;
 		}
 	
 /*********************************************************************************/
