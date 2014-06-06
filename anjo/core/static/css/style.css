@@ -879,3 +879,8 @@ span a:hover {
 .home-test {
 	color: #0090c5;
 }
+.donation {
+	width: 205px;
+	height: 30px;
+	background: #FFF;
+}

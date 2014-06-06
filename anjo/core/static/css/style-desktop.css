@@ -89,21 +89,28 @@
 	.box
 	{
 		padding: 2em;
+		min-height: 100%;
 	}
 		
 	.box-feature
 	{
 		padding: 0;
+		/* Modified by @fandrefh */
+		width: 218px;
+		height: auto;
 	}
 		
 		.box-feature .inner
 		{
-			padding: 4em 2em 3em 2em;
+			/* Modified by @fandrefh */
+			padding: 1.5em 0.5em 1.5em 0.5em;
+
 		}
 		
 		.box-feature h2
 		{
-			font-size: 1.35em;
+			/* Modified by @fandrefh */
+			font-size: 1.2em;
 		}
 
 		.box-feature p
