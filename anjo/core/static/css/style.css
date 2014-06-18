@@ -882,5 +882,18 @@ span a:hover {
 .donation {
 	width: 205px;
 	height: 30px;
+	margin: 0;
 	background: #FFF;
+}
+input[image]:active {
+	background: #FFF;
+}
+.arrumada {
+	width: 218px;
+	margin-left: 18px;
+}
+.main {
+	margin-left: 60px;
+	margin-right: 0;
+	padding: 0;
 }

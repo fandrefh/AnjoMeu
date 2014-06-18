@@ -8,9 +8,8 @@ from .models import AboutUs, HowItWork, Testimonials
 from anjo.campaign.models import Campaign
 from .forms import UserForm, UserProfileForm, TestimonialsForm
 
-
 def homepage(request):
-	campaign = Campaign.objects.all().order_by('-created_at')[:3]
+	campaign = Campaign.objects.all().order_by('-created_at')[:5]
 	camp_created = Campaign.objects.all().order_by('-created_at')[:4]
 	testimonial = Testimonials.objects.all().order_by('-created_at')[:5]
 	return render(request, 'index.html', {'campaign': campaign, 'camp_created': camp_created, 'testimonial': testimonial})
