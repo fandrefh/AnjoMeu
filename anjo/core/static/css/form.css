@@ -55,7 +55,7 @@ input:focus {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
 }
 
-input[type=submit] {
+.submit-form {
     width: 185px; height: 52px; float: left; padding: 10px 15px; margin: 0 15px 0 0;
     -moz-box-shadow: 0px 0px 5px #999;-webkit-box-shadow: 0px 0px 5px #999;
     border: 1px solid #556f8c;

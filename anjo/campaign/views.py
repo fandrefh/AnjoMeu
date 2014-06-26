@@ -23,7 +23,7 @@ def create_campaign(request):
 	return render(request, 'campaign/create_campaign.html', {'campaign_form': campaign_form, 'created': created})
 
 def list_campaign(request):
-	list_camp = Campaign.objects.all()
+	list_camp = Campaign.objects.all().order_by('-created_at')
 	paginator = Paginator(list_camp, 5)
 	page = request.GET.get('page')
 	try:

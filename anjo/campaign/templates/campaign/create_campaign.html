@@ -35,6 +35,17 @@
 						</ul>
 					</div>
 					<div class="field">
+						<p class="field-label">{{ campaign_form.donations.label }}</p>
+						<p class="field-input">{{ campaign_form.donations }}</p>
+						<p class="hint">
+							A partir de quanto gostaria de receber?
+							{{ campaign_form.donations.help_text }}
+						</p>
+						<ul class="message-error">
+							<li>{{ campaign_form.donations.errors }}</li>
+						</ul>
+					</div>
+					<div class="field">
 						<p class="field-label">{{ campaign_form.image.label }}</p>
 						<p class="field-input">{{ campaign_form.image }}</p>
 						<p class="hint">
@@ -56,7 +67,7 @@
 							<li>{{ campaign_form.message.errors }}</li>
 						</ul>
 					</div>
-					<input type="submit" value="Criar campanha">
+					<input type="submit" value="Criar campanha" class="submit-form">
 			</form>
 		</div>
 		{% endif %}

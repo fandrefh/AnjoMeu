@@ -50,15 +50,24 @@
                                             <p>{{ c.message|truncatewords:10 }}</p>
                                             
                                             <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
-                                            <form action="https://pagseguro.uol.com.br/checkout" method="post" content-type="application/x-www-form-urlencoded; charset=UTF-8">
-                                            <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
-                                            <input type="hidden" name="currency" value="BRL" />
-                                            <input type="hidden" name="receiverEmail" value="fandrefh@gmail.com" />
-                                            <input type="hidden" name="campID" value="{{ c.id }}" />
-                                            <input type="hidden" name="campTitle" value="{{ c.title }}" />
-                                            <input type="hidden" name="campValue" value="{{ c.donation_value }}" />
-                                            <input type="hidden" name="campQuantd" value="1" />
-                                            <input type="image" class="donation" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/doacoes/205x30-doar-azul.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+                                            <!-- Declaração do formulário -->  
+                                            <form target="pagseguro" method="post"   
+                                                action="https://pagseguro.uol.com.br/v2/checkout/cart.html?action=add" accept-charset="ISO-8859-1" class="form-pgs">  
+                                                  
+                                                <!-- Campos obrigatórios -->  
+                                                <input type="hidden" name="receiverEmail" value="fandrefh@gmail.com">  
+                                                <input type="hidden" name="currency" value="BRL">  
+                                                  
+                                                <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
+                                                <input type="hidden" name="itemId" value="{{ c.id }}">  
+                                                <input type="hidden" name="itemDescription" value="{{ c.title }}">  
+                                                <input type="hidden" name="itemAmount" value="{{ c.donations|cut:"," }}">  
+                                                <input type="hidden" name="itemQuantity" value="1">  
+                                                <input type="hidden" name="itemWeight" value="0"> 
+                                                  
+                                                <!-- submit do form (obrigatório) -->  
+                                                <input type="submit" name="submit" class="button-pgs" value="Quero doar">  
+                                                  
                                             </form>
                                             <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
                                         </div>

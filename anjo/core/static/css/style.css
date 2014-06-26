@@ -897,3 +897,15 @@ input[image]:active {
 	margin-right: 0;
 	padding: 0;
 }
+.button-pgs {
+	padding: 0;
+	width: 150px;
+	height: 40px;
+	background: #0090c5;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+}

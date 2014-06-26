@@ -4,4 +4,5 @@ jQuery(function($){
 	$("#id_code_postal").mask("99.999-999");
 	$("#id_phone_number").mask("(99)?9999-9999");
 	$("#id_goal").maskMoney({thousands: '.', decimal: ','});
+	$("#id_donations").maskMoney({thousands: ',', decimal: '.'});
 });
