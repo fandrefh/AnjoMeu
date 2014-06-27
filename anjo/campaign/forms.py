@@ -7,6 +7,8 @@ class CampaignForm(forms.ModelForm):
 		super(CampaignForm, self).__init__(*args, **kwargs)
 		self.fields['goal'].localize = True
 		self.fields['goal'].widget.is_localized = True
+		self.fields['donations'].localize = True
+		self.fields['donations'].widget.is_localized = True
 
 	class Meta:
 		model = Campaign
