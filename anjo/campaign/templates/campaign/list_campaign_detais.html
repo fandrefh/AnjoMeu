@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes da campanha | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if camp_destails %}
+			<h2>Vai fazer uma doação? Saiba mais!</h2>
+			<section class="lc">
+				<div class="lc-img-details">
+					<img src="{{ camp_destails.image.url }}" width="308px" height="208px" alt="{{ camp_destails.title }}" title="{{ camp_destails.title }}">
+				</div>
+				<h3>{{ camp_destails.title }}</h3>
+				<p>{{ camp_destails.message }}</p>
+				<div class="camp-details">
+					<p>Data da criação: {{ camp_destails.created_at }}</p>
+					<p>Meta R$: {{ camp_destails.goal }}</p>
+					<p>Doações a partir de R$: {{ camp_destails.donations }}</p>
+					<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+                    <!-- Declaração do formulário -->  
+                    <form target="pagseguro" method="post"   
+                        action="https://pagseguro.uol.com.br/v2/checkout/cart.html?action=add" accept-charset="ISO-8859-1" class="form-pgs">  
+                          
+                        <!-- Campos obrigatórios -->  
+                        <input type="hidden" name="receiverEmail" value="fandrefh@gmail.com">  
+                        <input type="hidden" name="currency" value="BRL">  
+                          
+                        <!-- Itens do pagamento (ao menos um item é obrigatório) -->  
+                        <input type="hidden" name="itemId" value="{{ camp_destails.id }}">  
+                        <input type="hidden" name="itemDescription" value="{{ camp_destails.title }}">  
+                        <input type="hidden" name="itemAmount" value="{{ camp_destails.donations|cut:"," }}">  
+                        <input type="hidden" name="itemQuantity" value="1">  
+                        <input type="hidden" name="itemWeight" value="0"> 
+                          
+                        <!-- submit do form (obrigatório) -->  
+                        <input type="submit" name="submit" class="btn-details" value="Quero doar">  
+                          
+                    </form>
+                    <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+				</div>
+			</section>
+		{% else %}
+			Desculpe, isso é constragedor, tente acessar a <a href="{% url 'home:homepage' %}">página principal.</a>
+		{% endif %}
+	</div>
+{% endblock content %}

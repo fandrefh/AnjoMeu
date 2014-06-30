@@ -865,6 +865,30 @@ span a:hover {
 	float: left;
 	clear: both;
 }
+.lc-img-details img {
+	margin-right: 10px;
+	margin-bottom: 20px;
+	float: left;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	clear: both;
+}
+.camp-details {
+	margin-left: 318px;
+}
+.btn-details {
+	padding: 0;
+	width: 150px;
+	height: 40px;
+	background: #0090c5;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+}
 .lc-img img {
 	border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -908,4 +932,8 @@ input[image]:active {
 	border: none;
 	font-weight: bold;
 	cursor: pointer;
+}
+.details {
+	margin-left: 55px;
+	font-size: 0.95em;
 }

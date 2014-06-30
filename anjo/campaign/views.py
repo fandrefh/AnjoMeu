@@ -1,5 +1,5 @@
 # coding: utf-8
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -33,3 +33,7 @@ def list_campaign(request):
 	except EmptyPage:
 		list_campaign = paginator.page(paginator.num_pages)
 	return render(request, 'campaign/list_campaign.html', {'list_campaign': list_campaign})
+
+def details(request, id):
+	camp_destails = get_object_or_404(Campaign, id=id)
+	return render(request, 'campaign/list_campaign_detais.html', {'camp_destails': camp_destails})
