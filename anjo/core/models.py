@@ -53,3 +53,28 @@ class Testimonials(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+class Banks(models.Model):
+	code_bank = models.PositiveIntegerField(u'Número do Banco', blank=True, null=True)
+	bank_name = models.CharField(u'Nome do Banco', max_length=70)
+
+	def __unicode__(self):
+		return self.bank_name
+
+	class Meta:
+		verbose_name=u'Bank'
+		verbose_name_plural=u'Banks'
+
+class UserBank(models.Model):
+	user = models.ForeignKey(User, blank=True, null=True, verbose_name=u'Usuário')
+	bank = models.ForeignKey(Banks, verbose_name=u'Banco', unique=True)
+	agency = models.CharField(u'Agência', max_length=20, unique=True)
+	account_bank = models.CharField(u'Conta Bancária', max_length=50, unique=True)
+	operation = models.CharField(u'Operação', max_length=10, blank=True, null=True, unique=True, help_text='Para correntista da CEF')
+
+	def __unicode__(self):
+		return "%s, %s, %s" % (self.bank, self.agency, self.account_bank)
+
+	class Meta:
+		verbose_name=u'User Bank'
+		verbose_name_plural=u'User\'s Bank'

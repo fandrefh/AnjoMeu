@@ -1,12 +1,14 @@
 # coding: utf-8
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 
+from .models import UserProfile, UserBank
+
 from .models import AboutUs, HowItWork, Testimonials
 from anjo.campaign.models import Campaign
-from .forms import UserForm, UserProfileForm, TestimonialsForm
+from .forms import UserForm, UserProfileForm, TestimonialsForm, UserBankForm, BanksForm
 
 def homepage(request):
 	campaign = Campaign.objects.all().order_by('-created_at')[:5]
@@ -106,3 +108,26 @@ def create_testimonial(request):
 def testimonial(request):
 	testimonial = Testimonials.objects.all().order_by('-created_at')
 	return render(request, 'core/testimonials.html', {'testimonial': testimonial})
+
+
+@login_required
+def add_bank(request):
+	created = False
+	if request.method == 'POST':
+		bank_form = UserBankForm(request.POST)
+		if bank_form.is_valid():
+			bf = bank_form.save(commit=False)
+			bf.user = request.user
+			bf.save()
+			created = True
+		else:
+			print(bank_form.errors)
+	else:
+		bank_form = UserBankForm()
+	return render(request, 'core/user_bank.html', {'bank_form': bank_form, 'created': created})
+
+@login_required
+def user_information(request, user_id):
+	user_infor = get_object_or_404(UserProfile, user=user_id)
+	user_bank = get_object_or_404(UserBank, user=user_id)
+	return render(request, 'core/user_information.html', {'user_infor': user_infor, 'user_bank': user_bank})

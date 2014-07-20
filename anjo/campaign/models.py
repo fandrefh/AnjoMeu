@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from locale import setlocale, currency as coin, LC_ALL
 import uuid, os
 
+from anjo.core.models import Banks
+
 # Create your models here.
 
 class Campaign(models.Model):

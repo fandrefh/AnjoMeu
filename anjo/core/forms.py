@@ -2,7 +2,7 @@
 from django import forms
 from localflavor.br.br_states import STATE_CHOICES
 from django.contrib.auth.models import User
-from .models import UserProfile, Testimonials
+from .models import UserProfile, Testimonials, UserBank, Banks
 
 
 class TestimonialsForm(forms.ModelForm):
@@ -27,3 +27,13 @@ class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
 		fields = ('cpf', 'birthday', 'gender', 'address', 'code_postal', 'neighborhood', 'state', 'city', 'phone_number')
+
+class BanksForm(forms.ModelForm):
+	class Meta:
+		model = Banks
+		excludes = ('code_bank')
+
+class UserBankForm(forms.ModelForm):
+	class Meta:
+		model = UserBank
+		excludes = ('user')

@@ -846,11 +846,11 @@
 	text-decoration: underline;
 	color: #FFF;
 }
-.link-logged a {
+ul.menu-user li a {
 	text-decoration: none;
 	font-weight: bold;
 }
-.link-logged a:hover {
+ul.menu-user a:hover {
 	text-decoration: underline;
 }
 span a {
@@ -936,4 +936,8 @@ input[image]:active {
 .details {
 	margin-left: 55px;
 	font-size: 0.95em;
+}
+p.account-success {
+	text-align: center;
+	margin-top: 75px;
 }

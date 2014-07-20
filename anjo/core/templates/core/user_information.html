@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Informações do usuário | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if user.is_authenticated %}
+				<h3>Meus dados</h3>
+				<div class="infor-user">
+					<table summary="Informações pessoais" class="table">
+					<caption>Informações pessoais</caption>
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Sobrenome</th>
+								<th>Endereço</th>
+								<th>Cidade</th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+							<tr>
+								<th>{{ user_infor.user.first_name }}</th>
+								<th>{{ user_infor.user.last_name }}</th>
+								<th>{{ user_infor.address }}</th>
+								<th>{{ user_infor.city }}</th>
+								<th>{{ user_infor.state }}</th>
+							</tr>
+						</tbody>
+					</table>
+					<table summary="Informações bancárias" class="table">
+					<caption>Informações bancárias</caption>
+						<thead>
+							<tr>
+								<th>Cód. Banco</th>
+								<th>Nome do Banco</th>
+								<th>Agência</th>
+								<th>Conta</th>
+								<th>Operação</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+							<tr>
+								<th>{{ user_bank.bank.code_bank }}</th>
+								<th>{{ user_bank.bank }}</th>
+								<th>{{ user_bank.agency }}</th>
+								<th>{{ user_bank.account_bank }}</th>
+								<th>{{ user_bank.operation }}</th>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		{% endif %}
+{% endblock content %}

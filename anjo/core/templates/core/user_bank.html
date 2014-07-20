@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Informações bancárias | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+			<div id="add-user">
+			{% if created %}
+			<p class="account-success">Conta cadastrada com sucesso!</p>
+			{% else %}
+				<h3>Informe seus dados bancários</h3>
+				<form method="POST", action="{% url 'home:addbank' %}">
+						{% csrf_token %}
+						
+						<div class="field">
+							<p class="field-label">{{ bank_form.bank.label }}</p>
+							<p class="field-input">{{ bank_form.bank }}</p>
+							<p class="hint">
+								Informe o banco.
+								{{ bank_form.agency.help_text }}
+							</p>
+							<ul class="message-error">
+								<li>{{ bank_form.agency.errors }}</li>
+							</ul>
+						</div>
+						<div class="field">
+							<p class="field-label">{{ bank_form.agency.label }}</p>
+							<p class="field-input">{{ bank_form.agency }}</p>
+							<p class="hint">
+								Informe o número da agência.
+								{{ bank_form.agency.help_text }}
+							</p>
+							<ul class="message-error">
+								<li>{{ bank_form.agency.errors }}</li>
+							</ul>
+						</div>
+						<div class="field">
+							<p class="field-label">{{ bank_form.account_bank.label }}</p>
+							<p class="field-input">{{ bank_form.account_bank }}</p>
+							<p class="hint">
+								Informe o número da sua conta bancária.
+								{{ bank_form.account_bank.help_text }}
+							</p>
+							<ul class="message-error">
+								<li>{{ bank_form.account_bank.errors }}</li>
+							</ul>
+						</div>
+						<div class="field">
+							<p class="field-label">{{ bank_form.operation.label }}</p>
+							<p class="field-input">{{ bank_form.operation }}</p>
+							<p class="hint">
+								Informe a operação, caso exista.
+								{{ bank_form.operation.help_text }}
+							</p>
+							<ul class="message-error">
+								<li>{{ bank_form.operation.errors }}</li>
+							</ul>
+						</div>
+						<input type="submit" value="Cadastrar" class="submit-form">
+				</form>
+			</div>
+			{% endif %}
+	</div>
+{% endblock content %}

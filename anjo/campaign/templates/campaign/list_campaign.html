@@ -13,7 +13,7 @@
 				</div>
 				<h3>{{ lc.title }}</h3>
 				<p>{{ lc.message|truncatewords:15 }}</p>
-				<span class="lc-camp"><a href="#">Ver campanha...</a></span>
+				<span class="lc-camp"><a href="{% url 'campaign:campaigndetails' lc.id %}">Ver campanha...</a></span>
 			</section>
 			{% endfor %}
 		{% else %}

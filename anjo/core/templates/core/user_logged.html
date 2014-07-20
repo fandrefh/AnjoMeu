@@ -5,7 +5,15 @@
 {% block content %}
 	<div class="container">
 		{% if user.is_authenticated %}
-			<h3>Login efetuado com sucesso!</h3>
-			<span class="link-logged"><a href="{% url 'campaign:createcampaign' %}">Crie sua campanha</a></span> ou <span class="link-logged"><a href="{% url 'campaign:listcampaign' %}">Faça uma doação</a></span>
+			<h2>Login efetuado com sucesso!</h2>
+				<h3>Comece aqui</h3>
+				<div class="infor-user">
+					<ul class="menu-user">
+						<li><a href="{% url 'home:userinfor' user.id %}" class="link-logged">Meus dados</a></li>
+						<li><a href="{% url 'campaign:createcampaign' %}" class="link-logged">Crie sua campanha</a></li>
+						<li><a href="{% url 'campaign:listcampaign' %}" class="link-logged">Faça uma doação</a></li>
+						<li><a href="{% url 'home:addbank' %}" class="link-logged">Cadastre seus dados financeiros (necessário para o recebimento das doações)</a></li>
+					</ul>
+				</div>
 		{% endif %}
 {% endblock content %}

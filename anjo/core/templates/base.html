@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}css/skel-noscript.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/style-desktop.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" />
         <!--[if lte IE 8]><script src="{{ STATIC_URL }}js/html5shiv.js"></script><link rel="stylesheet" href="{{ STATIC_URL }}css/ie8.css" /><![endif]-->
         <!--[if lte IE 7]><link rel="stylesheet" href="{{ STATIC_URL }}css/ie7.css" /><![endif]-->
     </head>
@@ -43,6 +44,7 @@
                         <li><a href="{% url 'home:userlogin' %}">Login</a></li>
                     {% else %}
                         <li>Seja bem-vindo {{ user.first_name }}!</li>
+                        <li><a href="{% url 'home:userlogged' %}">Acessar painel</a></li>
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'home:userlogout' %}">Sair</li></a>
