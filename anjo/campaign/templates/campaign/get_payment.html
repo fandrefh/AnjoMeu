@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Solicitar saque | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		<h4>Solicitação de saque</h4>
+		{% if created %}
+			<p>Obrigado! Em breve será depositado na sua conta o valor do saque solicitado.</p>
+		{% else %}
+			<form method="POST" action="{% url 'campaign:getpayment' %}">
+				{% csrf_token %}
+				<div class="field">
+
+					<p class="field-label">{{ pay_form.campaign.label }}</p>
+					<select name="optid">
+					<option>Selecione...</option>
+						{% for cp in campaign_p %}
+							<option value="{{ cp.id }}">{{ cp.title }}</option>
+						{% endfor %}
+					</select>
+					<p class="hint">
+						Escolha uma campanha.
+						{{ pay_form.campaign.help_text }}
+					</p>
+					<ul class="message-error">
+						<li>{{ pay_form.campaign.errors }}</li>
+					</ul>
+				</div>
+				<div class="field">
+					<p class="field-label">{{ pay_form.value.label }}</p>
+					<p class="field-input">{{ pay_form.value }}</p>
+					<p class="hint">
+						Valor que gostaria de sacar.
+						{{ pay_form.value.help_text }}
+					</p>
+					<ul class="message-error">
+						<li>{{ pay_form.value.errors }}</li>
+					</ul>
+				</div>
+				<input type="submit" value="Solicitar" class="submit-form">
+			</form>
+		{% endif %}
+	</div>
+{% endblock content %}

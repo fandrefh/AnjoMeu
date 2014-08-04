@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Doações recebidas | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if rec_campaign %}
+				<h3>Doações recebidas</h3>
+				<div class="infor-user">
+					<table summary="Informações pessoais" class="table">
+					<caption>Detalhes</caption>
+						<thead>
+							<tr>
+								<th>Cód. Campanha</th>
+								<th>Título da Campanha</th>
+								<th>Descrição da Campanha</th>
+								<th>Nome do Doador</th>
+								<th>E-mail do Doador</th>
+								<th>Valor Recebido</th>
+							</tr>
+						</thead>
+						<tbody style="text-align: center;">
+						{% for rec in rec_campaign %}
+							<tr>
+								<th>{{ rec.campaign.id }}</th>
+								<th>{{ rec.campaign.title }}</th>
+								<th>{{ rec.campaign.message }}</th>
+								<th>{{ rec.name_donator }}</th>
+								<th>{{ rec.email_donator }}</th>
+								<th>{{ rec.value }}</th>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+					<h4>Total arrecadado até o momento: {{ total_campaign.value__sum }}</h4>
+				</div>
+		{% else %}
+			<p>Nada recebido ainda, mas não desanime, continue compartilhando a sua campanha, com certeza alguém vai doar!</p>
+		{% endif %}
+{% endblock content %}

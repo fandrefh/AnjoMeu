@@ -4,8 +4,6 @@ from django.contrib.auth.models import User
 from locale import setlocale, currency as coin, LC_ALL
 import uuid, os
 
-from anjo.core.models import Banks
-
 # Create your models here.
 
 class Campaign(models.Model):
@@ -31,3 +29,12 @@ class Campaign(models.Model):
 
 	def __unicode__(self):
 		return self.title
+
+class GetPayment(models.Model):
+	campaign_c = models.ForeignKey(Campaign, verbose_name=u'Campanha', blank=True, null=True)
+	user_c = models.ForeignKey(User, verbose_name=u'Usuário', blank=True, null=True)
+	value = models.DecimalField(u'Valor R$', max_digits=15, decimal_places=2, help_text='Quanto quer sacar?')
+	request_date = models.DateTimeField(auto_now_add=True)
+
+	def __unicode__(self):
+		return self.campaign

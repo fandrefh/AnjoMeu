@@ -1,6 +1,7 @@
 #coding: utf-8
 from django.db import models
 from django.contrib.auth.models import User
+from anjo.campaign.models import Campaign
 
 # Create your models here.
 class AboutUs(models.Model):
@@ -67,7 +68,7 @@ class Banks(models.Model):
 
 class UserBank(models.Model):
 	user = models.ForeignKey(User, blank=True, null=True, verbose_name=u'Usuário')
-	bank = models.ForeignKey(Banks, verbose_name=u'Banco', unique=True)
+	bank = models.ForeignKey('Banks', verbose_name=u'Banco', unique=True)
 	agency = models.CharField(u'Agência', max_length=20, unique=True)
 	account_bank = models.CharField(u'Conta Bancária', max_length=50, unique=True)
 	operation = models.CharField(u'Operação', max_length=10, blank=True, null=True, unique=True, help_text='Para correntista da CEF')
@@ -78,3 +79,12 @@ class UserBank(models.Model):
 	class Meta:
 		verbose_name=u'User Bank'
 		verbose_name_plural=u'User\'s Bank'
+
+class DashUser(models.Model):
+	campaign = models.ForeignKey(Campaign)
+	name_donator = models.CharField(max_length=100, blank=True)
+	email_donator = models.EmailField(blank=True)
+	value = models.DecimalField(max_digits=15, decimal_places=2)
+
+	def __unicode__(self):
+		return "%s - %s - %d" % (self.name_donator, self.email_donator, self.value)

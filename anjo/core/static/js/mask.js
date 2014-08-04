@@ -5,4 +5,5 @@ jQuery(function($){
 	$("#id_phone_number").mask("(99)?9999-9999");
 	$("#id_goal").maskMoney({thousands: '.', decimal: ','});
 	$("#id_donations").maskMoney({thousands: '.', decimal: ','});
+	$("#id_value").maskMoney({thousands: '.', decimal: ','});
 });

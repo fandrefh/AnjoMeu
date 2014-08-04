@@ -1,5 +1,15 @@
 from django import forms
-from .models import Campaign
+from .models import Campaign, GetPayment
+
+class GetPaymentForm(forms.ModelForm):
+
+	def __init__(self, *args, **kwargs):
+		super(GetPaymentForm, self).__init__(*args, **kwargs)
+		self.fields['value'].localize = True
+		self.fields['value'].widget.is_localized = True
+
+	class Meta:
+		model = GetPayment
 
 class CampaignForm(forms.ModelForm):
 
@@ -12,4 +22,3 @@ class CampaignForm(forms.ModelForm):
 
 	class Meta:
 		model = Campaign
-		# excludes = ('user')

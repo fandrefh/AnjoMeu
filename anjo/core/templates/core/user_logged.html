@@ -10,9 +10,10 @@
 				<div class="infor-user">
 					<ul class="menu-user">
 						<li><a href="{% url 'home:userinfor' user.id %}" class="link-logged">Meus dados</a></li>
-						<li><a href="{% url 'campaign:createcampaign' %}" class="link-logged">Crie sua campanha</a></li>
+						<li><a href="{% url 'campaign:createcampaign' %}" class="link-logged">Crie sua campanha</a><li><a href="{% url 'campaign:mylistcampaign' user.id %}" class="link-logged">Ver minhas campanhas</a></li><li><a href="{% url 'campaign:createcampaign' %}" class="link-logged">Crie sua campanha</a></li>
 						<li><a href="{% url 'campaign:listcampaign' %}" class="link-logged">Faça uma doação</a></li>
 						<li><a href="{% url 'home:addbank' %}" class="link-logged">Cadastre seus dados financeiros (necessário para o recebimento das doações)</a></li>
+						<li><a href="{% url 'campaign:getpayment' %}" class="link-logged">Solicitar saque</a></li>
 					</ul>
 				</div>
 		{% endif %}
