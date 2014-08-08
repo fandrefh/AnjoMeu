@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Campanha criada com sucesso | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+			Obrigado por criar sua campanha com a gente, divulgue o máximo que puder, Facebook, Twitter, fale para os amigos e familiares que você precisa dessa ajuda.
+			<section class="fbshare">
+				<div class="fb-share-button" data-href="http://anjomeu.org/{% url 'campaign:campaigndetails' model.id %}/" data-width="400">
+				</div>
+			</section>
+			<section class="tshare">
+				<!-- Twitter Share -->
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://anjomeu.org{% url 'campaign:campaigndetails' model.id %}" data-lang="en" data-count="none">Tweet</a>
+				<script>
+					!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+				</script>
+			</section>
+			
+			
+		
+	</div>
+{% endblock content %}

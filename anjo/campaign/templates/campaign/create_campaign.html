@@ -4,9 +4,6 @@
 
 {% block content %}
 	<div class="container">
-		{% if created %}
-			Obrigado por criar sua campanha com a gente, divulgue o máximo que puder, Facebook, Twitter, fale para os amigos e familiares que você precisa dessa ajuda.
-		{% else %}
 		<div id="create-campaign">
 			<h3>Preencha os campos abaixo para criar sua campanha.</h3>
 			<form method="POST", enctype="multipart/form-data" action="{% url 'campaign:createcampaign' %}">
@@ -70,6 +67,5 @@
 					<input type="submit" value="Criar campanha" class="submit-form">
 			</form>
 		</div>
-		{% endif %}
 	</div>
 {% endblock content %}

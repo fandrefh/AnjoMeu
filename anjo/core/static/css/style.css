@@ -941,3 +941,15 @@ p.account-success {
 	text-align: center;
 	margin-top: 75px;
 }
+.fbshare {
+	width: 400px;
+	height: auto;
+	text-align: center;
+	margin: 0px auto 0px auto;
+}
+.tshare {
+	width: 400px;
+	height: auto;
+	text-align: center;
+	margin: 0px auto 0px auto;
+}

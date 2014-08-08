@@ -7,4 +7,5 @@ urlpatterns = patterns('anjo.campaign.views',
 	url(r'^minhas-campanhas/(?P<user_id>\d+)/$', 'list_my_campaign', name='mylistcampaign'),
 	url(r'^recebido-campanha/(?P<campaign_id>\d+)/$', 'received', name='receivedcampaign'),
 	url(r'^solicitar-saque/$', 'get_payment', name='getpayment'),
+	url(r'^sucesso/$', 'create_campaign', name='succ'),
 )
