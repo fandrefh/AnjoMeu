@@ -137,12 +137,11 @@
                                 <section class="widget-links">
                                     <h2>Blog/Notícias</h2>
                                     <ul class="style2">
-                                        <li><a href="#">Etiam feugiat condimentum</a></li>
-                                        <li><a href="#">Aliquam imperdiet suscipit odio</a></li>
-                                        <li><a href="#">Sed porttitor cras in erat nec</a></li>
-                                        <li><a href="#">Felis varius pellentesque potenti</a></li>
-                                        <li><a href="#">Nullam scelerisque blandit leo</a></li>
+                                    {% for p in posts %}
+                                        <li><a href="{% url 'blog:postdetails' p.id %}">{{ p.title|truncatewords:4 }}</a></li>
+                                    {% endfor %}
                                     </ul>
+                                    <span class="home-test"><a href="{% url 'blog:listposts' %}">Ver todos os posts</a></span>
                                 </section>
                         
                         </div>

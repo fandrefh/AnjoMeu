@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes da campanha | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if post_id %}
+			<section class="lc">
+				<!--<div class="lc-img-details">
+					<img src="{{ camp_destails.image.url }}" width="308px" height="208px" alt="{{ camp_destails.title }}" title="{{ camp_destails.title }}">
+				</div>-->
+				<h3>{{ post_id.title }}</h3>
+				<p>Data do post: {{ post_id.post_date }}</p>
+				<p>{{ post_id.text }}</p>
+			</section>
+		{% else %}
+			Desculpe, isso é constragedor, tente acessar a <a href="{% url 'home:homepage' %}">página principal.</a>
+		{% endif %}
+	</div>
+{% endblock content %}

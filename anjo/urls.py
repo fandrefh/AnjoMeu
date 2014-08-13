@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^campanha/', include('anjo.campaign.urls', namespace='campaign')),
+    url(r'^blog/', include('anjo.blog.urls', namespace='blog')),
     # Examples:
     # url(r'^$', 'anjo.views.home', name='home'),
     # url(r'^anjo/', include('anjo.foo.urls')),

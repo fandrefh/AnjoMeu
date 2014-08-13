@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Listas de Posts | {{ block.super }}{% endblock title %}
+
+{% block content %}
+	<div class="container">
+		{% if posts %}
+			<h2>Fique bem informado com o nossos posts!</h2>
+			{% for p in posts %}
+			<section class="lc">
+				<!--<div class="lc-img">
+					<img src="{{ lc.image.url }}" width="200px" height="120px" alt="{{ lc.title }}" title="{{ lc.title }}">
+				</div>-->
+				<h3>{{ p.title }}</h3>
+				<p>{{ p.text|truncatewords:25 }}</p>
+				<span class="lc-camp"><a href="{% url 'blog:postdetails' p.id %}">Continue lendo...</a></span>
+			</section>
+			{% endfor %}
+		{% else %}
+			Não existe nenhum post, em breve você ficará bem informado com nossos posts.
+		{% endif %}
+
+	<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">voltar</a>
+        {% endif %}
+
+        <span class="current">
+            Página {{ posts.number }} de {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">próxima</a>
+        {% endif %}
+    </span>
+</div>
+	</div>
+{% endblock content %}
