@@ -5,4 +5,4 @@ Cadastro de campanha;
 Integração com o PagSeguro (Carrinho do PagSeguro);
 Dashboard para acompanhamento de recebimentos.
 
-Nada mirabolante, coisa simples mesmo. Hmmm, acho que é isso! :-)
+Nada mirabolante, coisa simples mesmo. Acho que é isso! :-)
